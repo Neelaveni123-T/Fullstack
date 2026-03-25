@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffff 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .feedback-form {
+            margin-bottom: 40px;
+        }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            min-height: 100px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #5a6fd8;
+        }
+        .feedback-list {
+            margin-top: 30px;
+        }
+        .feedback-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .feedback-user {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        .logout-btn {
+            display: inline-block;
+            background: #dc3545;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+        .logout-btn:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback Page</h2>
+        
+        <div class="feedback-form">
+            <form method="POST" action="/feedback">
+                <textarea name="message" placeholder="Enter your feedback" required></textarea>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+
+        <div class="feedback-list">
+            <h3>All Feedback</h3>
+            {% for f in feedbacks %}
+                <div class="feedback-item">
+                    <div class="feedback-user">{{ f.user }}</div>
+                    <div>{{ f.message }}</div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+</body>
+</html>

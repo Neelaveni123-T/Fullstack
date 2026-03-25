@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffff 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .login-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .login-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        .logout-btn {
+            display: inline-block;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+        .register-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .register-btn:hover {
+            background: #3e8e41;
+            transform: translateY(-2px);
+        }
+        .nav-buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if user %}
+            <h1>Welcome back, {{ user }}!</h1>
+            <div class="nav-buttons">
+                <a href="/feedback" class="login-btn">Go to Feedback</a>
+                <a href="/logout" class="logout-btn">Logout</a>
+            </div>
+        {% else %}
+            <h1>Welcome to Our Website</h1>
+            <div class="nav-buttons">
+                <a href="/login" class="login-btn">Login</a>
+                <a href="/register" class="register-btn">Create Account</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
