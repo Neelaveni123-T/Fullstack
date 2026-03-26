@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: flask-feedback-app
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: MONGODB_URI
+        value: ${MONGODB_URI}
+      - key: DB_NAME
+        value: ${DB_NAME}
+
+databases:
+  - name: flask-db
+    databaseName: flask_db
+    user: flask_user
